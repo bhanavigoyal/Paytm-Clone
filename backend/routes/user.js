@@ -87,7 +87,12 @@ router.post("/signin",async(req,res)=>{
         },JWT_SECRET)
 
         res.status(200).json({
-            token: token
+            token: token,
+            userData:{
+                username: foundUser.username,
+                firstName: foundUser.firstName,
+                lastName: foundUser.lastName
+            }
         })
         return;
     }

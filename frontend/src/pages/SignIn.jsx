@@ -32,7 +32,8 @@ export const SignIn=()=>{
                         username: username,
                         password: password
                     });
-                    localStorage.setItem("token", response.token);
+                    localStorage.setItem("token", response.data.token);
+                    localStorage.setItem("user", JSON.stringify(response.data.userData));
                     navigate("/dashboard");
                     }catch(error){
                         console.error("error creating user: ", error);

@@ -40,7 +40,14 @@ export const SignUp=()=>{
                         lastName: lastName,
                         password: password
                     });
-                    localStorage.setItem("token", response.token);
+                    const userData={
+                        username,
+                        firstName,
+                        lastName,
+                        password
+                    }
+                    localStorage.setItem("token", response.data.token);
+                    localStorage.setItem("user",JSON.stringify(userData));
                     navigate("/dashboard");
                     }catch(error){
                         console.error("error creating user: ", error);
