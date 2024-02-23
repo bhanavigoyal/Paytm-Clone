@@ -16,6 +16,7 @@ const signupBody =zod.object({
 });
 
 router.post("/signup", async(req,res)=>{
+    try{
     const {success} = signupBody.safeParse(req.body);
     if(!success){
         return res.status(411).json({
@@ -56,6 +57,9 @@ router.post("/signup", async(req,res)=>{
         message: "User created successfully",
         token: token
     })
+}catch(error){
+    console.log("error while giving inputs: ", error);
+}
 });
 
 const signinBody =zod.object({
